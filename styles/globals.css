@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f6faff;
+}
+
+.bg-gray-light {
+  --tw-bg-opacity: 0.2;
+  background-color: rgb(211 220 230 / var(--tw-bg-opacity));
+}
+
+.industry {
+  background-image: url("/assets/images/shape.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 20rem;
+  outline: none;
+}
+
+.industryactive {
+  background-image: url("/assets/images/shape2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 20rem;
+  outline: none;
+  color: white;
+}
+
+.productdetail {
+  background: #e5e7ebba;
+}
