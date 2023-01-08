@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useStateContext } from "./api/auth/Contexts/ContextProvider";
 import { Tab } from "@headlessui/react";
 import Image from "next/image";
@@ -12,12 +12,18 @@ export default function Industries() {
   } = useStateContext();
   console.log("ButtonDatas, ", ButtonDatas);
 
-  const handleClick = (item) => {
+   const [clickedItem, setClickedItem] = useState(1)
+
+  useEffect(() => {
+    setFilteredData(ButtonDatas[0])
+  },[])
+
+  const handleClick = (item,id) => {
+   setClickedItem(id)
+    
     setShowcontainer(!showcontainer);
     setIsActive(true);
-    // console.log("datas=>", datas);
-    // setFilteredData(datas);
-    // const Filterdata = ButtonDatas.filter((data) => data.id === id);
+    
     setFilteredData(item);
 
     console.log("Filterdata===>", item);
@@ -45,10 +51,10 @@ export default function Industries() {
               {ButtonDatas.map((datas, i) => (
                 <Tab
                   key={i}
-                  className={` h-28 ${
-                    isActive ? "industryactive" : "industry"
+                 className={` h-28 ${
+                    clickedItem === datas.id ? "industryactive" : "industry"
                   }`}
-                  onClick={() => handleClick(datas)}
+                  onClick={() => handleClick(datas, datas.id )}
                 >
                   {datas.dataSection}
                 </Tab>
